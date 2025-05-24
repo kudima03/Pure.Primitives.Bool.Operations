@@ -13,7 +13,7 @@ public sealed record And : IBool
         _parameters = parameters;
     }
 
-    bool IBool.Value    
+    bool IBool.Value
     {
         get
         {
