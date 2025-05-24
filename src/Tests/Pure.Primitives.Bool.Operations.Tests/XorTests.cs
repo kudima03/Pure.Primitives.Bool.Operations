@@ -43,7 +43,7 @@ public sealed record XorTests
     public void ProduceCorrectValueOnEven()
     {
         IBool xor = new Xor(new True(), new False(), new False(), new True(), new False());
-        Assert.Equal(true ^ false ^ false ^ true ^ false,xor.Value);
+        Assert.Equal(true ^ false ^ false ^ true ^ false, xor.Value);
     }
 
     [Fact]
