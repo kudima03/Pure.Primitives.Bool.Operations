@@ -1,9 +1,22 @@
 ﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Bool.Operations.Tests.Fakes;
 
 namespace Pure.Primitives.Bool.Operations.Tests;
 
 public sealed record OrTests
 {
+    [Fact]
+    public void NotEvaluateAfterFirstTrue()
+    {
+        IReadOnlyCollection<BoolWithEvaluationMarker> values =
+            Enumerable.Range(0, 10).Select(_ => new BoolWithEvaluationMarker(false))
+                .Prepend(new BoolWithEvaluationMarker(true))
+                .ToArray();
+        IBool or = new Or(values);
+        _ = or.Value;
+        Assert.True(values.Skip(1).All(x => x.Evaluated is false));
+    }
+
     [Fact]
     public void ProduceCorrectValueOnAllTrue()
     {
