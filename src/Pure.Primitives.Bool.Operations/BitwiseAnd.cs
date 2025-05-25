@@ -21,7 +21,7 @@ public sealed record BitwiseAnd : IBool
             {
                 throw new ArgumentException();
             }
-            
+
             return _parameters.Count(x => x.Value is false) == 0;
         }
     }
