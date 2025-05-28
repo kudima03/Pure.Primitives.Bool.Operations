@@ -13,7 +13,7 @@ public sealed record Xor : IBool
         _parameters = parameters;
     }
 
-    bool IBool.Value
+    bool IBool.BoolValue
     {
         get
         {
@@ -22,7 +22,7 @@ public sealed record Xor : IBool
                 throw new ArgumentException();
             }
 
-            return _parameters.Count(p => p.Value) % 2 == 1;
+            return _parameters.Count(p => p.BoolValue) % 2 == 1;
         }
     }
 

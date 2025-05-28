@@ -13,7 +13,7 @@ public sealed record Or : IBool
         _parameters = parameters;
     }
 
-    bool IBool.Value
+    bool IBool.BoolValue
     {
         get
         {
@@ -22,7 +22,7 @@ public sealed record Or : IBool
                 throw new ArgumentException();
             }
 
-            return _parameters.Any(parameter => parameter.Value);
+            return _parameters.Any(parameter => parameter.BoolValue);
         }
     }
 
