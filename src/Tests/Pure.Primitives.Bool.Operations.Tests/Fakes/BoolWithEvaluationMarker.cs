@@ -10,12 +10,12 @@ public sealed record BoolWithEvaluationMarker : IBool
 {
     private readonly bool _value;
 
-    public BoolWithEvaluationMarker(bool value)
+    public BoolWithEvaluationMarker(bool BoolValue)
     {
-        _value = value;
+        _value = BoolValue;
     }
 
-    public bool Value
+    public bool BoolValue
     {
         get
         {

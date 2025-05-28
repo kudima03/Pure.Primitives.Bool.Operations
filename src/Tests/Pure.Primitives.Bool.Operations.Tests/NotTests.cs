@@ -7,15 +7,15 @@ public sealed record NotTests
     [Fact]
     public void ProduceCorrectValueOnTrue()
     {
-        IBool value = new Not(new True());
-        Assert.False(value.Value);
+        IBool BoolValue = new Not(new True());
+        Assert.False(BoolValue.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnFalse()
     {
-        IBool value = new Not(new False());
-        Assert.True(value.Value);
+        IBool BoolValue = new Not(new False());
+        Assert.True(BoolValue.BoolValue);
     }
 
     [Fact]

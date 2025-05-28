@@ -6,12 +6,12 @@ public sealed record Not : IBool
 {
     private readonly IBool _value;
 
-    public Not(IBool value)
+    public Not(IBool BoolValue)
     {
-        _value = value;
+        _value = BoolValue;
     }
 
-    bool IBool.Value => !_value.Value;
+    bool IBool.BoolValue => !_value.BoolValue;
 
     public override int GetHashCode()
     {
