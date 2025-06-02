@@ -6,9 +6,9 @@ public sealed record Not : IBool
 {
     private readonly IBool _value;
 
-    public Not(IBool value)
+    public Not(IBool BoolValue)
     {
-        _value = value;
+        _value = BoolValue;
     }
 
     bool IBool.BoolValue => !_value.BoolValue;
