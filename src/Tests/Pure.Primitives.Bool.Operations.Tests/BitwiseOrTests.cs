@@ -13,7 +13,7 @@ public sealed record BitwiseOrTests
                 .Prepend(new BoolWithEvaluationMarker(true))
                 .ToArray();
         IBool bitwiseOr = new BitwiseOr(values);
-        _ = bitwiseOr.Value;
+        _ = bitwiseOr.BoolValue;
         Assert.True(values.All(x => x.Evaluated));
     }
 
@@ -21,35 +21,35 @@ public sealed record BitwiseOrTests
     public void ProduceCorrectValueOnAllTrue()
     {
         IBool bitwiseOr = new BitwiseOr(new True(), new True(), new True(), new True());
-        Assert.True(bitwiseOr.Value);
+        Assert.True(bitwiseOr.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnAllFalse()
     {
         IBool bitwiseOr = new BitwiseOr(new False(), new False(), new False(), new False());
-        Assert.False(bitwiseOr.Value);
+        Assert.False(bitwiseOr.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnAllTrueOneFalse()
     {
         IBool bitwiseOr = new BitwiseOr(new True(), new True(), new True(), new False());
-        Assert.True(bitwiseOr.Value);
+        Assert.True(bitwiseOr.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnAllFalseOneTrue()
     {
         IBool bitwiseOr = new BitwiseOr(new True(), new False(), new False(), new False());
-        Assert.True(bitwiseOr.Value);
+        Assert.True(bitwiseOr.BoolValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnEmptyArguments()
     {
         IBool bitwiseOr = new BitwiseOr();
-        Assert.Throws<ArgumentException>(() => bitwiseOr.Value);
+        Assert.Throws<ArgumentException>(() => bitwiseOr.BoolValue);
     }
 
     [Fact]

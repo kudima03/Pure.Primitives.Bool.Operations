@@ -13,7 +13,7 @@ public sealed record OrTests
                 .Prepend(new BoolWithEvaluationMarker(true))
                 .ToArray();
         IBool or = new Or(values);
-        _ = or.Value;
+        _ = or.BoolValue;
         Assert.True(values.Skip(1).All(x => x.Evaluated is false));
     }
 
@@ -21,35 +21,35 @@ public sealed record OrTests
     public void ProduceCorrectValueOnAllTrue()
     {
         IBool or = new Or(new True(), new True(), new True(), new True());
-        Assert.True(or.Value);
+        Assert.True(or.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnAllFalse()
     {
         IBool or = new Or(new False(), new False(), new False(), new False());
-        Assert.False(or.Value);
+        Assert.False(or.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnAllTrueOneFalse()
     {
         IBool or = new Or(new True(), new True(), new True(), new False());
-        Assert.True(or.Value);
+        Assert.True(or.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnAllFalseOneTrue()
     {
         IBool or = new Or(new True(), new False(), new False(), new False());
-        Assert.True(or.Value);
+        Assert.True(or.BoolValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnEmptyArguments()
     {
         IBool or = new Or();
-        Assert.Throws<ArgumentException>(() => or.Value);
+        Assert.Throws<ArgumentException>(() => or.BoolValue);
     }
 
     [Fact]

@@ -15,7 +15,7 @@ public sealed record BoolWithEvaluationMarker : IBool
         _value = value;
     }
 
-    public bool Value
+    public bool BoolValue
     {
         get
         {

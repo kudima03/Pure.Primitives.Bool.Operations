@@ -13,7 +13,7 @@ public sealed record BitwiseAnd : IBool
         _parameters = parameters;
     }
 
-    bool IBool.Value
+    bool IBool.BoolValue
     {
         get
         {
@@ -22,7 +22,7 @@ public sealed record BitwiseAnd : IBool
                 throw new ArgumentException();
             }
 
-            return _parameters.Count(x => x.Value is false) == 0;
+            return _parameters.Count(x => x.BoolValue is false) == 0;
         }
     }
 

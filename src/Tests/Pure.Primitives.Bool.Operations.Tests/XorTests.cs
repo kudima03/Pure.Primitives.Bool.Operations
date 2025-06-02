@@ -8,49 +8,49 @@ public sealed record XorTests
     public void ProduceCorrectValueOnTrueTrue()
     {
         IBool xor = new Xor(new True(), new True());
-        Assert.Equal(true ^ true, xor.Value);
+        Assert.Equal(true ^ true, xor.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnFalseFalse()
     {
         IBool xor = new Xor(new False(), new False());
-        Assert.Equal(false ^ false, xor.Value);
+        Assert.Equal(false ^ false, xor.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnFalseTrue()
     {
         IBool xor = new Xor(new False(), new True());
-        Assert.Equal(false ^ true, xor.Value);
+        Assert.Equal(false ^ true, xor.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnTrueFalse()
     {
         IBool xor = new Xor(new True(), new False());
-        Assert.Equal(true ^ false, xor.Value);
+        Assert.Equal(true ^ false, xor.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnOdd()
     {
         IBool xor = new Xor(new True(), new False(), new False(), new True(), new True(), new False());
-        Assert.Equal(true ^ false ^ false ^ true ^ true ^ false, xor.Value);
+        Assert.Equal(true ^ false ^ false ^ true ^ true ^ false, xor.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnEven()
     {
         IBool xor = new Xor(new True(), new False(), new False(), new True(), new False());
-        Assert.Equal(true ^ false ^ false ^ true ^ false, xor.Value);
+        Assert.Equal(true ^ false ^ false ^ true ^ false, xor.BoolValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnEmptyArguments()
     {
         IBool xor = new Xor();
-        Assert.Throws<ArgumentException>(() => xor.Value);
+        Assert.Throws<ArgumentException>(() => xor.BoolValue);
     }
 
     [Fact]

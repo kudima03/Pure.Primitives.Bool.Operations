@@ -13,7 +13,7 @@ public sealed record AndTests
                 .Prepend(new BoolWithEvaluationMarker(false))
                 .ToArray();
         IBool and = new And(values);
-        _ = and.Value;
+        _ = and.BoolValue;
         Assert.True(values.Skip(1).All(x => x.Evaluated is false));
     }
 
@@ -21,35 +21,35 @@ public sealed record AndTests
     public void ProduceCorrectValueOnAllTrue()
     {
         IBool and = new And(new True(), new True(), new True(), new True());
-        Assert.True(and.Value);
+        Assert.True(and.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnAllFalse()
     {
         IBool and = new And(new False(), new False(), new False(), new False());
-        Assert.False(and.Value);
+        Assert.False(and.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnAllTrueOneFalse()
     {
         IBool and = new And(new True(), new True(), new True(), new False());
-        Assert.False(and.Value);
+        Assert.False(and.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnAllFalseOneTrue()
     {
         IBool and = new And(new True(), new False(), new False(), new False());
-        Assert.False(and.Value);
+        Assert.False(and.BoolValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnEmptyArguments()
     {
         IBool and = new And();
-        Assert.Throws<ArgumentException>(() => and.Value);
+        Assert.Throws<ArgumentException>(() => and.BoolValue);
     }
 
     [Fact]

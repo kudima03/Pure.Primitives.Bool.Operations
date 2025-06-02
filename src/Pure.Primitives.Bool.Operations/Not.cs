@@ -11,7 +11,7 @@ public sealed record Not : IBool
         _value = value;
     }
 
-    bool IBool.Value => !_value.Value;
+    bool IBool.BoolValue => !_value.BoolValue;
 
     public override int GetHashCode()
     {

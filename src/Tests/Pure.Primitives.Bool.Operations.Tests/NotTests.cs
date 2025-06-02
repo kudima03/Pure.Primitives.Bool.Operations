@@ -8,14 +8,14 @@ public sealed record NotTests
     public void ProduceCorrectValueOnTrue()
     {
         IBool value = new Not(new True());
-        Assert.False(value.Value);
+        Assert.False(value.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnFalse()
     {
         IBool value = new Not(new False());
-        Assert.True(value.Value);
+        Assert.True(value.BoolValue);
     }
 
     [Fact]
