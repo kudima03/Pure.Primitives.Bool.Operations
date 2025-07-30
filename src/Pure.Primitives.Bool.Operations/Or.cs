@@ -6,9 +6,7 @@ public sealed record Or : IBool
 {
     private readonly IEnumerable<IBool> _parameters;
 
-    public Or(params IBool[] parameters) : this(parameters.AsReadOnly()) { }
-
-    public Or(IEnumerable<IBool> parameters)
+    public Or(params IEnumerable<IBool> parameters)
     {
         _parameters = parameters;
     }
