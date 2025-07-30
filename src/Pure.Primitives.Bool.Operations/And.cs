@@ -6,9 +6,7 @@ public sealed record And : IBool
 {
     private readonly IEnumerable<IBool> _parameters;
 
-    public And(params IBool[] parameters) : this(parameters.AsReadOnly()) { }
-
-    public And(IEnumerable<IBool> parameters)
+    public And(params IEnumerable<IBool> parameters)
     {
         _parameters = parameters;
     }

@@ -6,9 +6,7 @@ public sealed record EqualCondition : IBool
 {
     private readonly IEnumerable<IBool> _parameters;
 
-    public EqualCondition(params IBool[] parameters) : this(parameters.AsReadOnly()) { }
-
-    public EqualCondition(IEnumerable<IBool> parameters)
+    public EqualCondition(params IEnumerable<IBool> parameters)
     {
         _parameters = parameters;
     }

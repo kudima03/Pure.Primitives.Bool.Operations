@@ -6,9 +6,7 @@ public sealed record BitwiseOr : IBool
 {
     private readonly IEnumerable<IBool> _parameters;
 
-    public BitwiseOr(params IBool[] parameters) : this(parameters.AsReadOnly()) { }
-
-    public BitwiseOr(IEnumerable<IBool> parameters)
+    public BitwiseOr(params IEnumerable<IBool> parameters)
     {
         _parameters = parameters;
     }
