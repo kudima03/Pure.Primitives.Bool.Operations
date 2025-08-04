@@ -15,7 +15,7 @@ public sealed record BitwiseAnd : IBool
         !_parameters.Any()
             ? throw new ArgumentException()
 #pragma warning disable CA1827
-            : _parameters.Count(x => x.BoolValue is false) == 0;
+            : _parameters.Count(x => !x.BoolValue) == 0;
 
     public override int GetHashCode()
     {
