@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Bool;
 
 namespace Pure.Primitives.Bool.Operations.Tests;
 
@@ -21,12 +21,12 @@ public sealed record NotTests
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new Not(new True()).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() => new Not(new True()).GetHashCode());
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new Not(new True()).ToString());
+        _ = Assert.Throws<NotSupportedException>(() => new Not(new True()).ToString());
     }
 }

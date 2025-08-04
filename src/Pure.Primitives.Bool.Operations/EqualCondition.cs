@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Bool;
 
 namespace Pure.Primitives.Bool.Operations;
 
@@ -11,18 +11,10 @@ public sealed record EqualCondition : IBool
         _parameters = parameters;
     }
 
-    bool IBool.BoolValue
-    {
-        get
-        {
-            if (!_parameters.Any())
-            {
-                throw new ArgumentException();
-            }
-
-            return _parameters.DistinctBy(x => x.BoolValue).Count() == 1;
-        }
-    }
+    bool IBool.BoolValue =>
+        !_parameters.Any()
+            ? throw new ArgumentException()
+            : _parameters.DistinctBy(x => x.BoolValue).Count() == 1;
 
     public override int GetHashCode()
     {

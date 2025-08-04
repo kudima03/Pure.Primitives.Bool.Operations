@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Bool;
 using Pure.Primitives.Bool.Operations.Tests.Fakes;
 
 namespace Pure.Primitives.Bool.Operations.Tests;
@@ -9,9 +9,12 @@ public sealed record BitwiseAndTests
     public void EvaluatesAll()
     {
         IReadOnlyCollection<BoolWithEvaluationMarker> values =
-            Enumerable.Range(0, 10).Select(_ => new BoolWithEvaluationMarker(true))
-                .Prepend(new BoolWithEvaluationMarker(false))
-                .ToArray();
+        [
+            .. Enumerable
+                .Range(0, 10)
+                .Select(_ => new BoolWithEvaluationMarker(true))
+                .Prepend(new BoolWithEvaluationMarker(false)),
+        ];
         IBool bitwiseAnd = new BitwiseAnd(values);
         _ = bitwiseAnd.BoolValue;
         Assert.True(values.All(x => x.Evaluated));
@@ -27,21 +30,36 @@ public sealed record BitwiseAndTests
     [Fact]
     public void ProduceCorrectValueOnAllFalse()
     {
-        IBool bitwiseAnd = new BitwiseAnd(new False(), new False(), new False(), new False());
+        IBool bitwiseAnd = new BitwiseAnd(
+            new False(),
+            new False(),
+            new False(),
+            new False()
+        );
         Assert.False(bitwiseAnd.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnAllTrueOneFalse()
     {
-        IBool bitwiseAnd = new BitwiseAnd(new True(), new True(), new True(), new False());
+        IBool bitwiseAnd = new BitwiseAnd(
+            new True(),
+            new True(),
+            new True(),
+            new False()
+        );
         Assert.False(bitwiseAnd.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnAllFalseOneTrue()
     {
-        IBool bitwiseAnd = new BitwiseAnd(new True(), new False(), new False(), new False());
+        IBool bitwiseAnd = new BitwiseAnd(
+            new True(),
+            new False(),
+            new False(),
+            new False()
+        );
         Assert.False(bitwiseAnd.BoolValue);
     }
 
@@ -49,18 +67,18 @@ public sealed record BitwiseAndTests
     public void ThrowsExceptionOnEmptyArguments()
     {
         IBool bitwiseAnd = new BitwiseAnd();
-        Assert.Throws<ArgumentException>(() => bitwiseAnd.BoolValue);
+        _ = Assert.Throws<ArgumentException>(() => bitwiseAnd.BoolValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new BitwiseAnd().GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() => new BitwiseAnd().GetHashCode());
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new BitwiseAnd().ToString());
+        _ = Assert.Throws<NotSupportedException>(() => new BitwiseAnd().ToString());
     }
 }
