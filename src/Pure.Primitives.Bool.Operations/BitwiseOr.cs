@@ -14,7 +14,7 @@ public sealed record BitwiseOr : IBool
     bool IBool.BoolValue =>
         !_parameters.Any()
             ? throw new ArgumentException()
-            : _parameters.Any(parameter => parameter.BoolValue);
+            : _parameters.Count(x => x.BoolValue) > 0;
 
     public override int GetHashCode()
     {
