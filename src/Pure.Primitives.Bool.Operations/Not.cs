@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Bool;
 
 namespace Pure.Primitives.Bool.Operations;
 
@@ -6,9 +6,9 @@ public sealed record Not : IBool
 {
     private readonly IBool _value;
 
-    public Not(IBool BoolValue)
+    public Not(IBool boolValue)
     {
-        _value = BoolValue;
+        _value = boolValue;
     }
 
     bool IBool.BoolValue => !_value.BoolValue;

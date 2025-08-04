@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Bool;
 
 namespace Pure.Primitives.Bool.Operations;
 
@@ -11,18 +11,10 @@ public sealed record BitwiseAnd : IBool
         _parameters = parameters;
     }
 
-    bool IBool.BoolValue
-    {
-        get
-        {
-            if (!_parameters.Any())
-            {
-                throw new ArgumentException();
-            }
-
-            return _parameters.Count(x => x.BoolValue is false) == 0;
-        }
-    }
+    bool IBool.BoolValue =>
+        !_parameters.Any()
+            ? throw new ArgumentException()
+            : _parameters.All(x => x.BoolValue);
 
     public override int GetHashCode()
     {

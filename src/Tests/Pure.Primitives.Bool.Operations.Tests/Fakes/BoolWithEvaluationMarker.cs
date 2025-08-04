@@ -1,18 +1,14 @@
-﻿using Pure.Primitives.Abstractions.Bool;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Pure.Primitives.Abstractions.Bool;
 
 namespace Pure.Primitives.Bool.Operations.Tests.Fakes;
+
 public sealed record BoolWithEvaluationMarker : IBool
 {
     private readonly bool _value;
 
-    public BoolWithEvaluationMarker(bool BoolValue)
+    public BoolWithEvaluationMarker(bool boolValue)
     {
-        _value = BoolValue;
+        _value = boolValue;
     }
 
     public bool BoolValue

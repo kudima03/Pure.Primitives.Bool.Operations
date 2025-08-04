@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Bool;
 
 namespace Pure.Primitives.Bool.Operations.Tests;
 
@@ -7,28 +7,48 @@ public sealed record NotEqualConditionTests
     [Fact]
     public void ProduceCorrectValueOnAllTrue()
     {
-        IBool condition = new NotEqualCondition(new True(), new True(), new True(), new True());
+        IBool condition = new NotEqualCondition(
+            new True(),
+            new True(),
+            new True(),
+            new True()
+        );
         Assert.False(condition.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnAllFalse()
     {
-        IBool condition = new NotEqualCondition(new False(), new False(), new False(), new False());
+        IBool condition = new NotEqualCondition(
+            new False(),
+            new False(),
+            new False(),
+            new False()
+        );
         Assert.False(condition.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnAllTrueOneFalse()
     {
-        IBool condition = new NotEqualCondition(new True(), new True(), new True(), new False());
+        IBool condition = new NotEqualCondition(
+            new True(),
+            new True(),
+            new True(),
+            new False()
+        );
         Assert.True(condition.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnAllFalseOneTrue()
     {
-        IBool condition = new NotEqualCondition(new True(), new False(), new False(), new False());
+        IBool condition = new NotEqualCondition(
+            new True(),
+            new False(),
+            new False(),
+            new False()
+        );
         Assert.True(condition.BoolValue);
     }
 
@@ -36,18 +56,22 @@ public sealed record NotEqualConditionTests
     public void ThrowsExceptionOnEmptyArguments()
     {
         IBool condition = new NotEqualCondition();
-        Assert.Throws<ArgumentException>(() => condition.BoolValue);
+        _ = Assert.Throws<ArgumentException>(() => condition.BoolValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new NotEqualCondition().GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new NotEqualCondition().GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new NotEqualCondition().ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new NotEqualCondition().ToString()
+        );
     }
 }

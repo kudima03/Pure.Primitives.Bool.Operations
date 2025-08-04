@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Bool;
 using Pure.Primitives.Bool.Operations.Tests.Fakes;
 
 namespace Pure.Primitives.Bool.Operations.Tests;
@@ -9,12 +9,15 @@ public sealed record AndTests
     public void NotEvaluateAfterFirstFalse()
     {
         IReadOnlyCollection<BoolWithEvaluationMarker> values =
-            Enumerable.Range(0, 10).Select(_ => new BoolWithEvaluationMarker(true))
-                .Prepend(new BoolWithEvaluationMarker(false))
-                .ToArray();
+        [
+            .. Enumerable
+                .Range(0, 10)
+                .Select(_ => new BoolWithEvaluationMarker(true))
+                .Prepend(new BoolWithEvaluationMarker(false)),
+        ];
         IBool and = new And(values);
         _ = and.BoolValue;
-        Assert.True(values.Skip(1).All(x => x.Evaluated is false));
+        Assert.True(values.Skip(1).All(x => !x.Evaluated));
     }
 
     [Fact]
@@ -49,18 +52,18 @@ public sealed record AndTests
     public void ThrowsExceptionOnEmptyArguments()
     {
         IBool and = new And();
-        Assert.Throws<ArgumentException>(() => and.BoolValue);
+        _ = Assert.Throws<ArgumentException>(() => and.BoolValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new And().GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() => new And().GetHashCode());
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new And().ToString());
+        _ = Assert.Throws<NotSupportedException>(() => new And().ToString());
     }
 }

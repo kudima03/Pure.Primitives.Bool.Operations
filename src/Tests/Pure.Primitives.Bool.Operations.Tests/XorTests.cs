@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Bool;
 
 namespace Pure.Primitives.Bool.Operations.Tests;
 
@@ -35,14 +35,27 @@ public sealed record XorTests
     [Fact]
     public void ProduceCorrectValueOnOdd()
     {
-        IBool xor = new Xor(new True(), new False(), new False(), new True(), new True(), new False());
+        IBool xor = new Xor(
+            new True(),
+            new False(),
+            new False(),
+            new True(),
+            new True(),
+            new False()
+        );
         Assert.Equal(true ^ false ^ false ^ true ^ true ^ false, xor.BoolValue);
     }
 
     [Fact]
     public void ProduceCorrectValueOnEven()
     {
-        IBool xor = new Xor(new True(), new False(), new False(), new True(), new False());
+        IBool xor = new Xor(
+            new True(),
+            new False(),
+            new False(),
+            new True(),
+            new False()
+        );
         Assert.Equal(true ^ false ^ false ^ true ^ false, xor.BoolValue);
     }
 
@@ -50,18 +63,18 @@ public sealed record XorTests
     public void ThrowsExceptionOnEmptyArguments()
     {
         IBool xor = new Xor();
-        Assert.Throws<ArgumentException>(() => xor.BoolValue);
+        _ = Assert.Throws<ArgumentException>(() => xor.BoolValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new Xor().GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() => new Xor().GetHashCode());
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new Xor().ToString());
+        _ = Assert.Throws<NotSupportedException>(() => new Xor().ToString());
     }
 }
