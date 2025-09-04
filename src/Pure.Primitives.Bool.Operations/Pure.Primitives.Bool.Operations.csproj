@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Pure.Primitives.Abstractions" Version="4.0.10" />
+    <PackageReference Include="Pure.Primitives.Abstractions" Version="4.0.11" />
   </ItemGroup>
   <PropertyGroup>
     <PackageId>Pure.Primitives.Bool.Operations</PackageId>
