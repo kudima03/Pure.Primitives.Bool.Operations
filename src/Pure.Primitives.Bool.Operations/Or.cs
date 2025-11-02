@@ -11,7 +11,7 @@ public sealed record Or : IBool
         _parameters = parameters;
     }
 
-    bool IBool.BoolValue =>
+    public bool BoolValue =>
         !_parameters.Any()
             ? throw new ArgumentException()
             : _parameters.Any(parameter => parameter.BoolValue);
