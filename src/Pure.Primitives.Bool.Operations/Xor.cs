@@ -11,7 +11,7 @@ public sealed record Xor : IBool
         _parameters = parameters;
     }
 
-    bool IBool.BoolValue =>
+    public bool BoolValue =>
         !_parameters.Any()
             ? throw new ArgumentException()
             : _parameters.Count(p => p.BoolValue) % 2 == 1;
