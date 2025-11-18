@@ -4,11 +4,9 @@ namespace Pure.Primitives.Bool.Operations.Tests.Fakes;
 
 public sealed record BoolWithEvaluationMarker : IBool
 {
-    private readonly bool _value;
-
     public BoolWithEvaluationMarker(bool boolValue)
     {
-        _value = boolValue;
+        BoolValue = boolValue;
     }
 
     public bool BoolValue
@@ -16,7 +14,7 @@ public sealed record BoolWithEvaluationMarker : IBool
         get
         {
             Evaluated = true;
-            return _value;
+            return field;
         }
     }
 
