@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./src/Pure.Primitives.String.Operations
+        working-directory: ./src/Pure.Primitives.Bool.Operations
 
     strategy:
       fail-fast: false
