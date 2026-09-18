@@ -6,6 +6,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [0.5.1] — 2026-09-18
+
+- Maintenance release: removed the `Microsoft.NET.ILLink.Tasks` build-time
+  package reference, enabled package validation, and bumped test
+  dependencies.
+
 ## [0.5.0] — 2025-11-18
 
 ### Changed
