@@ -6,6 +6,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [0.6.0] — 2026-11-11
+
+### Added
+- Package now also targets `net11.0`.
+
+### Changed
+- Updated `Pure.Primitives` dependency to the .NET 11 release (Abstractions 4.4.0).
+
 ## [0.5.1] — 2026-09-18
 
 - Maintenance release: removed the `Microsoft.NET.ILLink.Tasks` build-time
